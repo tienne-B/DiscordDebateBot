@@ -22,12 +22,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# Get key from heroku config env else use a fall back
 SECRET_KEY = 'b84$1yfx9&4v(=sgv%$l%v3k+ag*gs&u1yr75iy4)ooq%qfj1v'
+if os.environ.get('DJANGO_SECRET_KEY'):
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["test-ddiscord.herokuapp.com", "discord.liduc.org", "debatediscord.herokuapp.com"]
 
 
 # Application definition
