@@ -1,1 +1,1 @@
-web: gunicorn debatebot.debatebot.wsgi --log-file -
+web: gunicorn debatebot.wsgi --log-file -
