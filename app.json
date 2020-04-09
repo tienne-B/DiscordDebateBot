@@ -1,0 +1,26 @@
+{
+  "name": "Discord Debate Bot",
+  "description": "Discord bot for online parliamentary debate tournaments",
+  "repository": "https://github.com/tienne-B/DiscordDebateBot",
+  "keywords": ["debate", "debating", "discord"],
+  "website": "https://discord.liduc.org/",
+  "addons": [
+    "heroku-postgresql:hobby-dev"
+  ],
+  "env": {
+    "SECRET_KEY": {
+        "description": "The secret key for the Django application.",
+        "generator": "secret"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "buildpacks": [
+    {"url": "heroku/python"}
+  ],
+  "stack": "heroku-18"
+}

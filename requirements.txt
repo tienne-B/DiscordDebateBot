@@ -1,0 +1,18 @@
+# Django
+Django==3.0.5
+djangorestframework==3.10.2             # For serialising objects
+dj-database-url==0.5.0
+dj-cmd==1.0                             # Provides the dj command alias
+
+# Database
+psycopg2==2.8.4                         # For Django to talk to postgres
+# Note: The Heroku instructions seem to advise using psycopg2-binary:
+#     https://devcenter.heroku.com/articles/heroku-postgresql#connecting-with-django
+# but the psycopg2 documentation advises against using the binary distribution
+# in production:
+#     http://initd.org/psycopg/docs/install.html#binary-install-from-pypi
+
+# Misc
+ipython==7.11.*
+gunicorn==20.0.*
+requests==2.23.*
