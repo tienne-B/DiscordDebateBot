@@ -1,14 +1,17 @@
-import asyncio
+# import asyncio
 
-import discord.ext.commands
+from discord.ext.commands import Bot
 # import psycopg2
 
-description = "The Debate Bot, for all argumentive needs!"
-bot = commands.Bot(command_prefix="!", description=description)
+from debatebot.timer import TimerCog
 
-cogs = ['debatebot.timer']
+
+description = "The Debate Bot, for all argumentive needs!"
+bot = Bot(command_prefix="!", description=description)
+
+cogs = [TimerCog]
 
 @bot.event
 async def on_ready():
-	for cog in cogs:
-		bot.load_extension(cog)
+    for cog in cogs:
+        bot.load_cog(cog)

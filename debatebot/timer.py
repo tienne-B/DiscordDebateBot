@@ -1,6 +1,6 @@
-import discord.ext.commands
+from discord.ext.commands import Cog
 
-class TimerCog(commands.Cog):
+class TimerCog(Cog):
 
-	def __init__(self, bot):
-		self.bot = bot
+    def __init__(self, bot):
+        self.bot = bot
