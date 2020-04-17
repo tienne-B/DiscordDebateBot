@@ -14,9 +14,10 @@ class BaseTabIntegration:
     Methods here can access both tab and Discord APIs, but direct interaction
     with Discord is to be avoided."""
 
-    async def __init__(self, tournament, client=None):
+    async def __init__(self, tournament, client=None, db=None):
         self.tournament = tournament
-        self.client = client
+        self.ctx = ctx
+        self.db = db
 
     async def _get_api_root(self):
         """This method needs to obtain the URL to the applicable API root by the
