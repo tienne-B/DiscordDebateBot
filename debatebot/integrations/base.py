@@ -38,7 +38,8 @@ class BaseTabIntegration:
 
     async def get_rooms(self):
         """Fetches the rooms from the tab to populate the `Room` table. This
-        method should not effect Discord channels."""
+        method should not effect Discord channels. For that, this method should
+        return the name and tab ID of the room."""
         raise NotImplementedError
 
     async def get_pairings(self):
@@ -47,10 +48,10 @@ class BaseTabIntegration:
         should be:
 
         {
-            "room",
-            "teams": [{"id", "name"}],
-            "adjudicators": [ids],
-            "observers": [ids]
+            "channel",
+            "teams": [{"name", "speakers": [discord_names]}],
+            "adjudicators": [discord_names],
+            "observers": [discord_names]
         }
 
         The first adjudicator in the list will be considered the chair, and
