@@ -23,7 +23,7 @@ class TabbycatIntegration(BaseTabIntegration):
         return '/'.join(url)
 
     async def _get_adjudicators(self, assocs):
-        adjudicators_response = requests.get(self.get_api_root() + '/adjudicators/')
+        adjudicators_response = requests.get(self.get_api_root() + '/adjudicators')
         if adjudicators_response.status_code == 401:  # Unauthorized
             await self.ctx.send(
                 "Could not access adjudicators list. Make sure the public view "
@@ -47,7 +47,7 @@ class TabbycatIntegration(BaseTabIntegration):
         )
 
     async def _get_teams(self, assocs):
-        teams_response = requests.get(self.get_api_root() + '/teams/')
+        teams_response = requests.get(self.get_api_root() + '/teams')
         if teams_response.status_code == 401:  # Unauthorized
             return 0  # Error message shown with adjs
 
@@ -104,11 +104,11 @@ class TabbycatIntegration(BaseTabIntegration):
             await self.ctx.send("All participants added.")
 
     def get_rooms(self):
-        venue_request = requests.get(self.get_api_root() + '/venues/')
+        venue_request = requests.get(self.get_api_root() + '/venues')
         return [(v['id'], v['display_name']) for v in venue_request.json()]
 
     def get_pairings(self, round):
-        pairings_req = requests.get(self.get_api_root() + '/rounds/' + round + '/pairings/')
+        pairings_req = requests.get(self.get_api_root() + '/rounds/' + round + '/pairings')
         if pairings_req.status_code == 401:  # Unauthorized
             await self.ctx.send(
                 """Could not access pairings. Make sure the round is released and
@@ -116,7 +116,7 @@ class TabbycatIntegration(BaseTabIntegration):
             )
             return 0
 
-        teams_req = requests.get(self.get_api_root() + '/teams/')
+        teams_req = requests.get(self.get_api_root() + '/teams')
         if pairings_req.status_code == 401:  # Unauthorized
             await self.ctx.send(
                 """Could not access team list. Make sure the public view of the
