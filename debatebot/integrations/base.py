@@ -14,7 +14,7 @@ class BaseTabIntegration:
     Methods here can access both tab and Discord APIs, but direct interaction
     with Discord is to be avoided."""
 
-    async def __init__(self, tournament, client=None, db=None):
+    async def __init__(self, tournament, ctx=None, db=None):
         self.tournament = tournament
         self.ctx = ctx
         self.db = db
