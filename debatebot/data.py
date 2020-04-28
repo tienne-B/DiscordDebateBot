@@ -1,5 +1,7 @@
 from discord.ext import commands
 
+from .integrations import get_integration
+
 
 class DataCog(commands.Cog):
 
@@ -15,4 +17,6 @@ class DataCog(commands.Cog):
     @commands.command(pass_context=True)
     @commands.has_role("Convenor")
     async def import_participants(self, ctx, *args):
-        username_list = ctx.message.attachments[0]
+        tournament = await self.bot.db.fetchrow("SELECT * FROM tournament WHERE guild_id=$1;", ctx.guild.id)
+        integration = await get_integration(tournament, ctx, self.bot.db)
+        await integration.get_participants()
